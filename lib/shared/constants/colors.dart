@@ -8,3 +8,5 @@ const List<Color> darkThemePrimaryGradient = [
   Color(0xff000000),
   Color(0xff292929)
 ];
+
+const Color white = Colors.white;
