@@ -12,11 +12,15 @@ import 'package:flutter_svg/svg.dart';
 class ViewAllTimersScreen extends StatelessWidget {
   const ViewAllTimersScreen({super.key});
 
+  static route() =>
+      MaterialPageRoute(builder: (context) => const ViewAllTimersScreen());
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       appbar: CustomAppBar(
+        showBackButton: false,
         title: Text(
           'Timesheets',
           style: Theme.of(context).textTheme.headlineLarge,
@@ -35,7 +39,9 @@ class ViewAllTimersScreen extends StatelessWidget {
           ),
         ],
       ),
-      tabbar: const CustomTabBar(),
+      tabbar: const CustomTabBar(
+        tabs: ['Favourites', 'Odoo', 'Local'],
+      ),
       footer: const CustomBottomNavigationBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

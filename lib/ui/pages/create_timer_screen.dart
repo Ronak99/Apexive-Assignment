@@ -19,14 +19,6 @@ class CreateTimerScreen extends StatelessWidget {
     return AppScaffold(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       appbar: CustomAppBar(
-        leading: GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: SvgPicture.asset(
-            Assets.back,
-            height: 48,
-            width: 48,
-          ),
-        ),
         title: Expanded(
           child: Center(
             child: Text(
@@ -35,7 +27,6 @@ class CreateTimerScreen extends StatelessWidget {
             ),
           ),
         ),
-        actions: const [SizedBox(height: 48, width: 48)],
       ),
       footer: ActionButton(text: 'Create Timer', onTap: () => {}),
       body: Container(

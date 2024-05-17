@@ -58,12 +58,12 @@ const TextTheme _textTheme = TextTheme(
   ),
   bodySmall: TextStyle(
     fontSize: 12,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     color: white,
   ),
   displayLarge: TextStyle(
     fontSize: 36,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     color: white,
   ),
   displayMedium: TextStyle(
@@ -104,6 +104,10 @@ class AppTheme {
         textTheme: _textTheme,
         highlightColor: lightThemePrimaryGradient.last,
         inputDecorationTheme: _inputDecorationTheme,
+        dividerTheme: DividerThemeData(
+          color: white.withOpacity(.16),
+          thickness: 1,
+        ),
       );
   static ThemeData get darkTheme => ThemeData(
         brightness: Brightness.dark,

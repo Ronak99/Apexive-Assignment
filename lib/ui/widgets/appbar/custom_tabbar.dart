@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomTabBar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomTabBar({super.key});
+  final List<String> tabs;
+  const CustomTabBar({
+    Key? key,
+    required this.tabs,
+  }) : super(key: key);
 
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
@@ -27,7 +31,7 @@ class _CustomTabBarState extends State<CustomTabBar>
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: TabBar(
         controller: _tabController,
-        tabs: ['Favourites', 'Odoo', 'Local'].map((e) => Text(e)).toList(),
+        tabs: widget.tabs.map((e) => Text(e)).toList(),
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white,
         labelStyle: Theme.of(context).textTheme.labelMedium,

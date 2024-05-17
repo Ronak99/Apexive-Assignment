@@ -12,6 +12,7 @@ class Assets {
   static const briefcaseSmallIcon = '$_images/briefcase_small.svg';
   static const starSmallIcon = '$_images/star_small.svg';
   static const pauseIcon = '$_images/pause.svg';
+  static const pencil = '$_images/pencil.svg';
   static const back = '$_images/back.svg';
   static const down = '$_images/down.svg';
 }
