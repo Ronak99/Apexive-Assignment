@@ -1,24 +1,30 @@
+import 'package:apexive_assignment/shared/utils/utils.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+import 'package:apexive_assignment/core/models/app_timer.dart';
 import 'package:apexive_assignment/shared/constants/assets.dart';
 import 'package:apexive_assignment/shared/constants/colors.dart';
 import 'package:apexive_assignment/ui/widgets/appbar/custom_appbar.dart';
 import 'package:apexive_assignment/ui/widgets/appbar/custom_tabbar.dart';
 import 'package:apexive_assignment/ui/widgets/scaffold/app_scaffold.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class TaskDetailsScreen extends StatelessWidget {
-  const TaskDetailsScreen({super.key});
+  final AppTimer appTimer;
+  const TaskDetailsScreen({
+    super.key,
+    required this.appTimer,
+  });
 
-  static route() =>
-      MaterialPageRoute(builder: (context) => const TaskDetailsScreen());
+  static route({required AppTimer appTimer}) => MaterialPageRoute(
+      builder: (context) => TaskDetailsScreen(appTimer: appTimer));
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       appbar: CustomAppBar(
         title: Text(
-          'Get to know Apexer - Ivan',
+          appTimer.task.name,
           style: Theme.of(context).textTheme.labelLarge!.copyWith(
                 fontWeight: FontWeight.w600,
               ),
@@ -62,7 +68,10 @@ class TaskDetailsScreen extends StatelessWidget {
                   SizedBox(height: 16),
                   Divider(height: 0),
                   SizedBox(height: 16),
-                  DescriptionView(),
+                  DescriptionView(
+                    text:
+                        "My description that keeps on going and going and going and going and going and going and going",
+                  ),
                 ],
               ),
             ),
@@ -73,11 +82,36 @@ class TaskDetailsScreen extends StatelessWidget {
   }
 }
 
-class DescriptionView extends StatelessWidget {
-  const DescriptionView({super.key});
+class DescriptionView extends StatefulWidget {
+  final String text;
+  const DescriptionView({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  State<DescriptionView> createState() => _DescriptionViewState();
+}
+
+class _DescriptionViewState extends State<DescriptionView> {
+  bool isOverflowed = false;
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
+    TextStyle textStyle = Theme.of(context).textTheme.labelMedium!.copyWith(
+          fontWeight: FontWeight.w400,
+        );
+
+    if (Utils.doesExceedsMaxLines(
+      context: context,
+      text: widget.text,
+      maxLines: 2,
+      textStyle: textStyle,
+    )) {
+      isOverflowed = true;
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -101,18 +135,31 @@ class DescriptionView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        Text(
-          'Sync with Client, communicate, work on the new design with designer, new tasks preparation call with the front end',
-          maxLines: 2,
-          overflow: TextOverflow.clip,
-          style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                fontWeight: FontWeight.w400,
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              isExpanded = !isExpanded;
+            });
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.text,
+                maxLines: isExpanded ? null : 2,
+                overflow: isExpanded ? null : TextOverflow.ellipsis,
+                style: textStyle,
               ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          'Read More',
-          style: Theme.of(context).textTheme.bodySmall,
+              if (!isExpanded && isOverflowed)
+                Container(
+                  margin: const EdgeInsets.only(top: 4),
+                  child: Text(
+                    'Read More',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ),
+            ],
+          ),
         ),
       ],
     );
@@ -151,6 +198,22 @@ class BasicDetailsView extends StatelessWidget {
 class TimerView extends StatelessWidget {
   const TimerView({super.key});
 
+  Widget timerButton({
+    required VoidCallback onTap,
+    required String icon,
+    double opacity = 1,
+  }) =>
+      Container(
+        decoration: BoxDecoration(
+          color: white.withOpacity(opacity),
+          shape: BoxShape.circle,
+        ),
+        height: 48,
+        width: 48,
+        alignment: Alignment.center,
+        child: SvgPicture.asset(icon),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -163,22 +226,15 @@ class TimerView extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: white.withOpacity(.16),
-                shape: BoxShape.circle,
-              ),
-              height: 48,
-              width: 48,
+            timerButton(
+              icon: Assets.stopIcon,
+              onTap: () {},
+              opacity: .16,
             ),
             const SizedBox(width: 16),
-            Container(
-              decoration: const BoxDecoration(
-                color: white,
-                shape: BoxShape.circle,
-              ),
-              height: 48,
-              width: 48,
+            timerButton(
+              icon: Assets.pauseIcon,
+              onTap: () {},
             ),
           ],
         ),

@@ -1,14 +1,17 @@
-import 'package:apexive_assignment/shared/constants/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'package:apexive_assignment/shared/constants/assets.dart';
+
 class NoContentView extends StatelessWidget {
-  const NoContentView({super.key});
+  final NoContentData noContentData;
+  const NoContentView({
+    super.key,
+    required this.noContentData,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final NoContentData noContentData = NoContentData.odooTimesheets();
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(

@@ -1,3 +1,4 @@
+import 'package:apexive_assignment/shared/constants/numerics.dart';
 import 'package:apexive_assignment/ui/widgets/appbar/custom_tabbar.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class AppScaffold extends StatelessWidget {
     required this.appbar,
     this.tabbar,
     this.footer,
-    this.padding = EdgeInsets.zero,
+    this.padding = pagePadding,
     required this.body,
   });
 

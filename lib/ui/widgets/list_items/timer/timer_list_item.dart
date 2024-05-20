@@ -1,18 +1,29 @@
-import 'package:apexive_assignment/shared/constants/assets.dart';
-import 'package:apexive_assignment/ui/pages/task_details_screen.dart';
-import 'package:apexive_assignment/ui/pages/view_all_timers_screen.dart';
+import 'package:apexive_assignment/features/timesheets/bloc/app_timer_bloc.dart';
+import 'package:apexive_assignment/shared/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'package:apexive_assignment/core/models/app_timer.dart';
+import 'package:apexive_assignment/features/timesheets/presentation/pages/view/view_all_timers_screen.dart';
+import 'package:apexive_assignment/shared/constants/assets.dart';
+import 'package:apexive_assignment/ui/pages/task_details_screen.dart';
+
 class TimerListItem extends StatelessWidget {
-  const TimerListItem({super.key});
+  final AppTimer appTimer;
+  const TimerListItem({
+    super.key,
+    required this.appTimer,
+  });
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey key = GlobalKey();
 
     return GestureDetector(
-      onTap: () => Navigator.push(context, TaskDetailsScreen.route()),
+      onTap: () =>
+          Navigator.push(context, TaskDetailsScreen.route(appTimer: appTimer)),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(.08),
@@ -34,23 +45,23 @@ class TimerListItem extends StatelessWidget {
                   ),
                 ),
                 padding: const EdgeInsets.only(left: 8),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     DetailsView(
                       icon: Assets.starSmallIcon,
-                      text: 'iOS app deployment',
+                      text: appTimer.project.name,
                       isTitle: true,
                       iconSize: 16,
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     DetailsView(
                       icon: Assets.briefcaseSmallIcon,
-                      text: 'S0056 - Booquio V2',
+                      text: appTimer.task.name,
                       isTitle: false,
                     ),
-                    SizedBox(height: 4),
-                    DetailsView(
+                    const SizedBox(height: 4),
+                    const DetailsView(
                       icon: Assets.clockSmallIcon,
                       text: 'Deadline 07/20/2023',
                       isTitle: false,
@@ -59,35 +70,40 @@ class TimerListItem extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              height: 48,
-              width: 104,
-              padding:
-                  const EdgeInsets.only(left: 16, right: 8, bottom: 8, top: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                // color: Colors.white,
-                borderRadius: BorderRadius.circular(64),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    '00:30',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
-                  const SizedBox(width: 0),
-                  Container(
-                    height: 32,
-                    width: 32,
-                    padding: const EdgeInsets.all(4),
-                    child: SvgPicture.asset(Assets.pauseIcon),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () => context
+                  .read<AppTimerBloc>()
+                  .add(StartTimerRequested(appTimer: appTimer)),
+              child: Container(
+                height: 48,
+                width: 104,
+                padding: const EdgeInsets.only(
+                    left: 16, right: 8, bottom: 8, top: 8),
+                decoration: BoxDecoration(
+                  color: white,
+                  borderRadius: BorderRadius.circular(64),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      // '00:30',
+                      appTimer.task.duration.inSeconds.toString(),
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                    const SizedBox(width: 0),
+                    Container(
+                      height: 32,
+                      width: 32,
+                      padding: const EdgeInsets.all(4),
+                      child: SvgPicture.asset(Assets.pauseIcon),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

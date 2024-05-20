@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class CustomTabBar extends StatefulWidget implements PreferredSizeWidget {
   final List<String> tabs;
   const CustomTabBar({
-    Key? key,
+    super.key,
     required this.tabs,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
@@ -21,7 +21,7 @@ class _CustomTabBarState extends State<CustomTabBar>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: widget.tabs.length, vsync: this);
   }
 
   @override
