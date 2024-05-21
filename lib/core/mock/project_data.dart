@@ -1,4 +1,5 @@
-import 'package:apexive_assignment/core/models/app_timer.dart';
+import 'package:apexive_assignment/core/models/project.dart';
+import 'package:apexive_assignment/core/models/task.dart';
 
 List<Project> projectList = [
   Project(
@@ -25,19 +26,23 @@ List<Project> projectList = [
 
 List<Task> taskList = [
   Task(
-      id: 'TS0056',
-      name: "Task Booquio V2",
-      duration: const Duration(seconds: 45)),
+    id: 'TS0056',
+    name: "12 Second Task",
+    duration: const Duration(seconds: 12),
+  ),
   Task(
-      id: 'TS0057',
-      name: "Task Booquio V3",
-      duration: const Duration(seconds: 45)),
+    id: 'TS0057',
+    name: "60 Second Task",
+    duration: const Duration(seconds: 60),
+  ),
   Task(
-      id: 'TS0058',
-      name: "Task Booquio V4",
-      duration: const Duration(seconds: 45)),
+    id: 'TS0058',
+    name: "30 Second Task",
+    duration: const Duration(seconds: 30),
+  ),
   Task(
-      id: 'TS0059',
-      name: "Task Booquio V5",
-      duration: const Duration(seconds: 45)),
+    id: 'TS0059',
+    name: "200 Second Task",
+    duration: const Duration(seconds: 200),
+  ),
 ];

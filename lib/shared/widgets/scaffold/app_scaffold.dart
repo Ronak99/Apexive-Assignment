@@ -1,5 +1,5 @@
 import 'package:apexive_assignment/shared/constants/numerics.dart';
-import 'package:apexive_assignment/ui/widgets/appbar/custom_tabbar.dart';
+import 'package:apexive_assignment/shared/widgets/appbar/custom_tabbar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:apexive_assignment/shared/constants/colors.dart';

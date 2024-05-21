@@ -1,17 +1,15 @@
 import 'package:apexive_assignment/features/timesheets/bloc/app_timer_bloc.dart';
 import 'package:apexive_assignment/shared/constants/assets.dart';
-import 'package:apexive_assignment/shared/constants/numerics.dart';
 import 'package:apexive_assignment/features/create_timer/create_timer_screen.dart';
-import 'package:apexive_assignment/ui/widgets/appbar/custom_bottom_navigation_bar.dart';
-import 'package:apexive_assignment/ui/widgets/appbar/custom_appbar.dart';
-import 'package:apexive_assignment/ui/widgets/appbar/custom_tabbar.dart';
-import 'package:apexive_assignment/ui/widgets/buttons/app_bar_action_button.dart';
-import 'package:apexive_assignment/ui/widgets/content/no_content_view.dart';
-import 'package:apexive_assignment/ui/widgets/list_items/timer/timer_list_item.dart';
-import 'package:apexive_assignment/ui/widgets/scaffold/app_scaffold.dart';
+import 'package:apexive_assignment/shared/widgets/appbar/custom_bottom_navigation_bar.dart';
+import 'package:apexive_assignment/shared/widgets/appbar/custom_appbar.dart';
+import 'package:apexive_assignment/shared/widgets/appbar/custom_tabbar.dart';
+import 'package:apexive_assignment/shared/widgets/buttons/app_bar_action_button.dart';
+import 'package:apexive_assignment/shared/widgets/content/no_content_view.dart';
+import 'package:apexive_assignment/shared/widgets/list_items/timer/timer_list_item.dart';
+import 'package:apexive_assignment/shared/widgets/scaffold/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ViewAllTimersScreen extends StatelessWidget {
   const ViewAllTimersScreen({super.key});
@@ -34,6 +32,10 @@ class ViewAllTimersScreen extends StatelessWidget {
             icon: Assets.arrowUpDown,
           ),
           AppBarActionButton(
+            // onTap: () => Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (builder) => const TickerView()),
+            // ),
             onTap: () => Navigator.push(
               context,
               CreateTimerScreen.route(),

@@ -1,9 +1,10 @@
 import 'package:apexive_assignment/core/mock/project_data.dart';
 import 'package:apexive_assignment/core/models/app_timer.dart';
+import 'package:apexive_assignment/core/models/project.dart';
+import 'package:apexive_assignment/core/models/task.dart';
 import 'package:apexive_assignment/shared/utils/custom_exception.dart';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 part 'create_timer_state.dart';
 
@@ -42,11 +43,13 @@ class CreateTimerCubit extends Cubit<CreateTimerState> {
       throw throw const CustomException(
           message: 'Please provide a description');
     }
+    descriptionFieldController.clear();
     return AppTimer(
       project: state.project!,
       task: state.task!,
       description: descriptionFieldController.text,
       isFavourite: state.isFavourite,
+      createdOn: DateTime.now(),
     );
   }
 }

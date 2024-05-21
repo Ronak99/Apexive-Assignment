@@ -10,9 +10,9 @@ final class CreateAppTimerRequested extends AppTimerEvent {
   });
 }
 
-final class StartTimerRequested extends AppTimerEvent {
+final class MarkCompleteRequested extends AppTimerEvent {
   final AppTimer appTimer;
-  StartTimerRequested({
+  MarkCompleteRequested({
     required this.appTimer,
   });
 }

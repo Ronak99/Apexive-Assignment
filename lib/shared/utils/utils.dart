@@ -62,4 +62,10 @@ class Utils {
 
     return false;
   }
+
+  static String formatDuration(Duration duration) {
+    int minutes = duration.inMinutes;
+    int seconds = (duration.inSeconds) - (minutes * 60);
+    return "${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}";
+  }
 }

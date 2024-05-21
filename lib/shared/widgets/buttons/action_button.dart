@@ -16,6 +16,7 @@ class ActionButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 48,
+        margin: const EdgeInsets.only(bottom: 16),
         width: double.infinity,
         alignment: Alignment.center,
         decoration: BoxDecoration(
