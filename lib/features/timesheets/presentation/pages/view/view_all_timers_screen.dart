@@ -32,10 +32,6 @@ class ViewAllTimersScreen extends StatelessWidget {
             icon: Assets.arrowUpDown,
           ),
           AppBarActionButton(
-            // onTap: () => Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (builder) => const TickerView()),
-            // ),
             onTap: () => Navigator.push(
               context,
               CreateTimerScreen.route(),
@@ -59,7 +55,7 @@ class ViewAllTimersScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 12),
                 Text(
-                  'You have ${state.appTimers.length} Timers',
+                  'You have ${state.appTimers.length} Timer${state.appTimers.length > 1 ? 's' : ''}',
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
                 const SizedBox(height: 8),

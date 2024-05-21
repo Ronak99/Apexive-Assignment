@@ -37,7 +37,7 @@ class _CustomTabBarState extends State<CustomTabBar>
         tabs: widget.tabs.map((e) => Text(e)).toList(),
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white,
-        labelStyle: Theme.of(context).textTheme.labelMedium,
+        labelStyle: Theme.of(context).textTheme.labelLarge,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorColor: Colors.white,
         dividerColor: Colors.white.withOpacity(.16),

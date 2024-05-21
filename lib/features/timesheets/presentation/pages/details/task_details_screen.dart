@@ -1,4 +1,4 @@
-import 'package:apexive_assignment/features/timesheets/bloc/app_timer_bloc.dart';
+import 'package:apexive_assignment/features/timesheets/presentation/pages/details/tabs/details_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,12 +6,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:apexive_assignment/core/models/app_timer.dart';
 import 'package:apexive_assignment/features/ticker/bloc/ticker_bloc.dart';
 import 'package:apexive_assignment/shared/constants/assets.dart';
-import 'package:apexive_assignment/shared/constants/colors.dart';
 import 'package:apexive_assignment/shared/utils/utils.dart';
 import 'package:apexive_assignment/shared/widgets/appbar/custom_appbar.dart';
 import 'package:apexive_assignment/shared/widgets/appbar/custom_tabbar.dart';
 import 'package:apexive_assignment/shared/widgets/scaffold/app_scaffold.dart';
-import 'package:apexive_assignment/shared/widgets/timer/custom_timer_view.dart';
+import 'package:apexive_assignment/features/timesheets/presentation/pages/details/tabs/timesheets_tab.dart';
 
 class TaskDetailsScreen extends StatefulWidget {
   final AppTimer appTimer;
@@ -57,9 +56,7 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen>
       appbar: CustomAppBar(
         title: Text(
           widget.appTimer.task.name,
-          style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         actions: [
           GestureDetector(
@@ -83,52 +80,9 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen>
         children: [
           BlocProvider<TickerBloc>.value(
             value: widget.tickerBloc,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              width: double.infinity,
-              child: ListView(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: white.withOpacity(.08),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const BasicDetailsView(),
-                        const SizedBox(height: 8),
-                        CustomTimerView(
-                          duration: widget.appTimer.task.duration,
-                          showExpandedView: true,
-                          onStop: () {
-                            context.read<AppTimerBloc>().add(
-                                  MarkCompleteRequested(
-                                    appTimer: widget.appTimer,
-                                  ),
-                                );
-
-                            Utils.showSnackbar(
-                                message:
-                                    'The task and the project were marked as completed.',
-                                level: SnackbarLevel.success);
-
-                            Navigator.pop(context);
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        const Divider(height: 0),
-                        const SizedBox(height: 16),
-                        DescriptionView(text: widget.appTimer.description),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: TimesheetsTab(appTimer: widget.appTimer),
           ),
-          const SizedBox(),
+          DetailsTab(appTimer: widget.appTimer),
         ],
       ),
     );
@@ -247,60 +201,3 @@ class BasicDetailsView extends StatelessWidget {
     );
   }
 }
-
-// class TimerView extends StatelessWidget {
-//   const TimerView({super.key});
-
-//   Widget timerButton({
-//     required VoidCallback onTap,
-//     required String icon,
-//     double opacity = 1,
-//   }) =>
-//       Container(
-//         decoration: BoxDecoration(
-//           color: white.withOpacity(opacity),
-//           shape: BoxShape.circle,
-//         ),
-//         height: 48,
-//         width: 48,
-//         alignment: Alignment.center,
-//         child: SvgPicture.asset(icon),
-//       );
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocBuilder<TickerBloc, TickerState>(
-//       builder: (context, state) {
-//         // final duration =
-//         //     context.select((TickerBloc bloc) => bloc.state.duration);
-
-//         final tickerBloc = BlocProvider.of<TickerBloc>(context);
-
-//         return Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             Text(
-//               tickerBloc.state.duration.toString(),
-//               style: Theme.of(context).textTheme.displayLarge,
-//             ),
-//             Row(
-//               mainAxisSize: MainAxisSize.min,
-//               children: [
-//                 timerButton(
-//                   icon: Assets.stopIcon,
-//                   onTap: () {},
-//                   opacity: .16,
-//                 ),
-//                 const SizedBox(width: 16),
-//                 timerButton(
-//                   icon: Assets.pauseIcon,
-//                   onTap: () {},
-//                 ),
-//               ],
-//             ),
-//           ],
-//         );
-//       },
-//     );
-//   }
-// }

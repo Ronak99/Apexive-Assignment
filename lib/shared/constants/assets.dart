@@ -17,6 +17,7 @@ class Assets {
   static const back = '$_images/back.svg';
   static const down = '$_images/down.svg';
   static const playIcon = '$_images/play.svg';
+  static const circularCheckmark = '$_images/circular_checkmark.svg';
 }
 
 class NoContentData {

@@ -43,11 +43,12 @@ class CreateTimerCubit extends Cubit<CreateTimerState> {
       throw throw const CustomException(
           message: 'Please provide a description');
     }
+    String description = descriptionFieldController.text.trim();
     descriptionFieldController.clear();
     return AppTimer(
       project: state.project!,
       task: state.task!,
-      description: descriptionFieldController.text,
+      description: description,
       isFavourite: state.isFavourite,
       createdOn: DateTime.now(),
     );

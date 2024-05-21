@@ -115,7 +115,7 @@ class CreateTimerScreen extends StatelessWidget {
                 ),
                 Text(
                   'Make Favourite',
-                  style: Theme.of(context).textTheme.labelLarge,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],
             ),
@@ -153,7 +153,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
         enableSearch: false,
         enableFilter: false,
         expandedInsets: EdgeInsets.zero,
-        textStyle: Theme.of(context).textTheme.labelLarge,
+        textStyle: Theme.of(context).textTheme.bodyLarge,
         initialSelection: initialSelection,
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(

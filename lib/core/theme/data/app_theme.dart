@@ -4,12 +4,22 @@ import 'package:flutter/material.dart';
 const TextTheme _textTheme = TextTheme(
   headlineLarge: TextStyle(
     fontSize: 32,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
+    color: white,
+  ),
+  headlineMedium: TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w700,
+    color: white,
+  ),
+  headlineSmall: TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
     color: white,
   ),
   labelLarge: TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
     color: white,
   ),
   labelMedium: TextStyle(
@@ -21,34 +31,24 @@ const TextTheme _textTheme = TextTheme(
     fontSize: 10,
     color: white,
   ),
-  headlineMedium: TextStyle(
-    fontSize: 28,
-    fontWeight: FontWeight.bold,
-    color: white,
-  ),
-  headlineSmall: TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.bold,
-    color: white,
-  ),
   titleLarge: TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     color: white,
   ),
   titleMedium: TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
     color: white,
   ),
   titleSmall: TextStyle(
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
     color: white,
   ),
   bodyLarge: TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
     color: white,
   ),
   bodyMedium: TextStyle(
@@ -94,7 +94,7 @@ InputDecorationTheme _inputDecorationTheme = InputDecorationTheme(
     ),
     borderRadius: BorderRadius.circular(8),
   ),
-  hintStyle: _textTheme.labelLarge,
+  hintStyle: _textTheme.bodyLarge,
 );
 
 class AppTheme {
