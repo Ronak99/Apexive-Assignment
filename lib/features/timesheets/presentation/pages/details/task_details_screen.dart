@@ -144,6 +144,7 @@ class _DescriptionViewState extends State<DescriptionView> {
         const SizedBox(height: 4),
         GestureDetector(
           onTap: () {
+            if (!isOverflowed) return;
             setState(() {
               isExpanded = !isExpanded;
             });
