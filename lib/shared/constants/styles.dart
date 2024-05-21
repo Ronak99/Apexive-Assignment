@@ -71,4 +71,6 @@ const TextTheme textTheme = TextTheme(
   ),
 );
 
+const String defaultFontFamily = 'inter';
+
 DividerThemeData dividerThemeData = const DividerThemeData(thickness: 1);

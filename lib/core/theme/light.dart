@@ -54,6 +54,7 @@ class LightTheme {
   static ThemeData get data => ThemeData(
         brightness: Brightness.dark,
         textTheme: textTheme,
+        fontFamily: defaultFontFamily,
         inputDecorationTheme: inputDecorationTheme,
         dividerTheme: dividerThemeData,
         colorScheme: ColorScheme(
