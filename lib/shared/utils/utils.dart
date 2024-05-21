@@ -1,4 +1,4 @@
-import 'package:apexive_assignment/shared/constants/colors.dart';
+import 'package:apexive_assignment/shared/constants/styles.dart';
 import 'package:flutter/material.dart';
 
 enum SnackbarLevel {
@@ -17,24 +17,26 @@ class Utils {
   }) {
     Color? backgroundColor;
 
+    BuildContext context = scaffoldMessengerKey.currentState!.context;
+
     switch (level) {
       case SnackbarLevel.success:
         backgroundColor = Colors.green;
         break;
       case SnackbarLevel.error:
-        backgroundColor = Colors.red;
+        backgroundColor = Theme.of(context).colorScheme.error;
         break;
       default:
-        backgroundColor = Colors.black;
+        backgroundColor = Theme.of(context).colorScheme.onPrimaryContainer;
         break;
     }
 
     final snackbar = SnackBar(
       content: Text(
         message,
-        style: const TextStyle(
-          color: white,
-        ),
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
       ),
       backgroundColor: backgroundColor,
     );

@@ -2,7 +2,7 @@ import 'package:apexive_assignment/shared/constants/numerics.dart';
 import 'package:apexive_assignment/shared/widgets/appbar/custom_tabbar.dart';
 import 'package:flutter/material.dart';
 
-import 'package:apexive_assignment/shared/constants/colors.dart';
+import 'package:apexive_assignment/shared/constants/styles.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget appbar;
@@ -27,8 +27,8 @@ class AppScaffold extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).highlightColor,
+              Theme.of(context).colorScheme.surface,
+              Theme.of(context).colorScheme.surfaceTint,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,

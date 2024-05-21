@@ -1,3 +1,4 @@
+import 'package:apexive_assignment/core/theme/light.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,8 +8,8 @@ import 'package:apexive_assignment/core/models/app_timer.dart';
 import 'package:apexive_assignment/features/ticker/bloc/ticker_bloc.dart';
 import 'package:apexive_assignment/features/ticker/ticker.dart';
 import 'package:apexive_assignment/shared/constants/assets.dart';
-import 'package:apexive_assignment/shared/constants/colors.dart';
-import 'package:apexive_assignment/features/timesheets/presentation/pages/details/task_details_screen.dart';
+import 'package:apexive_assignment/shared/constants/styles.dart';
+import 'package:apexive_assignment/features/timers/presentation/pages/details/task_details_screen.dart';
 import 'package:apexive_assignment/shared/widgets/timer/custom_timer_view.dart';
 
 class TimerListItem extends StatefulWidget {
@@ -63,7 +64,7 @@ class _TimerListItemState extends State<TimerListItem> {
                   decoration: const BoxDecoration(
                     border: Border(
                       left: BorderSide(
-                        color: Color(0xffFFC629),
+                        color: indicatorColor,
                         width: 2,
                       ),
                     ),
@@ -97,7 +98,7 @@ class _TimerListItemState extends State<TimerListItem> {
               if (widget.appTimer.isComplete)
                 Container(
                   decoration: BoxDecoration(
-                    color: white,
+                    color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(32),
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -1,5 +1,5 @@
 import 'package:apexive_assignment/shared/constants/assets.dart';
-import 'package:apexive_assignment/shared/constants/colors.dart';
+import 'package:apexive_assignment/shared/constants/styles.dart';
 import 'package:apexive_assignment/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,13 +22,16 @@ class ExpandedTimerView extends StatelessWidget {
   Widget timerButton({
     required VoidCallback onTap,
     required String icon,
+    required BuildContext context,
     bool isResetButton = false,
   }) =>
       GestureDetector(
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: isResetButton ? white.withOpacity(.16) : white,
+            color: isResetButton
+                ? Theme.of(context).colorScheme.secondary
+                : Theme.of(context).colorScheme.primary,
             shape: BoxShape.circle,
           ),
           height: 48,
@@ -37,7 +40,9 @@ class ExpandedTimerView extends StatelessWidget {
           child: SvgPicture.asset(
             icon,
             colorFilter: ColorFilter.mode(
-              isResetButton ? white : Colors.black,
+              isResetButton
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).colorScheme.onPrimaryContainer,
               BlendMode.srcIn,
             ),
           ),
@@ -60,12 +65,14 @@ class ExpandedTimerView extends StatelessWidget {
               icon: Assets.stopIcon,
               onTap: onStop,
               isResetButton: true,
+              context: context,
             ),
             const SizedBox(width: 16),
             timerButton(
               icon: isRunning ? Assets.pauseIcon : Assets.playIcon,
               onTap: isRunning ? onPause : onPlay,
               isResetButton: false,
+              context: context,
             ),
           ],
         ),

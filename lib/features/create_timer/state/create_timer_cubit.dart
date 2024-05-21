@@ -1,4 +1,4 @@
-import 'package:apexive_assignment/core/mock/project_data.dart';
+import 'package:apexive_assignment/mock/project_data.dart';
 import 'package:apexive_assignment/core/models/app_timer.dart';
 import 'package:apexive_assignment/core/models/project.dart';
 import 'package:apexive_assignment/core/models/task.dart';

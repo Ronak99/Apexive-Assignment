@@ -1,5 +1,4 @@
 import 'package:apexive_assignment/shared/constants/assets.dart';
-import 'package:apexive_assignment/shared/constants/colors.dart';
 import 'package:apexive_assignment/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,8 +18,12 @@ class MiniTimerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color foregroundColor = isRunning ? Colors.black : white;
-    Color backgroundColor = isRunning ? white : white.withOpacity(.08);
+    Color foregroundColor = isRunning
+        ? Theme.of(context).colorScheme.onPrimaryContainer
+        : Theme.of(context).colorScheme.primary;
+    Color backgroundColor = isRunning
+        ? Theme.of(context).colorScheme.primary
+        : Theme.of(context).colorScheme.primary.withOpacity(.08);
 
     return GestureDetector(
       onTap: isRunning ? onPause : onPlay,

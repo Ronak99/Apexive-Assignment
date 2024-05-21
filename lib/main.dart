@@ -1,9 +1,7 @@
-import 'package:apexive_assignment/core/theme/data/app_theme.dart';
-import 'package:apexive_assignment/features/create_timer/cubit/create_timer_cubit.dart';
-import 'package:apexive_assignment/features/ticker/bloc/ticker_bloc.dart';
-import 'package:apexive_assignment/features/ticker/ticker.dart';
-import 'package:apexive_assignment/features/timesheets/bloc/app_timer_bloc.dart';
-import 'package:apexive_assignment/features/timesheets/presentation/pages/view/view_all_timers_screen.dart';
+import 'package:apexive_assignment/core/theme/light.dart';
+import 'package:apexive_assignment/features/create_timer/state/create_timer_cubit.dart';
+import 'package:apexive_assignment/features/timers/bloc/app_timer_bloc.dart';
+import 'package:apexive_assignment/features/timers/presentation/pages/view/view_all_timers_screen.dart';
 import 'package:apexive_assignment/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: Utils.scaffoldMessengerKey,
-        theme: AppTheme.lightTheme,
+        theme: LightTheme.data,
         home: const ViewAllTimersScreen(),
       ),
     );

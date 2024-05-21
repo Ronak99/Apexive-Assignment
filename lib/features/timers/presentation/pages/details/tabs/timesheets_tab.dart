@@ -1,13 +1,13 @@
-import 'package:apexive_assignment/features/timesheets/bloc/app_timer_bloc.dart';
+import 'package:apexive_assignment/features/timers/bloc/app_timer_bloc.dart';
+import 'package:apexive_assignment/features/timers/presentation/pages/details/tabs/details_tab.dart';
+import 'package:apexive_assignment/features/timers/presentation/pages/details/widgets/date_and_time_view.dart';
 import 'package:apexive_assignment/shared/constants/assets.dart';
 import 'package:apexive_assignment/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:apexive_assignment/core/models/app_timer.dart';
-import 'package:apexive_assignment/features/ticker/bloc/ticker_bloc.dart';
-import 'package:apexive_assignment/features/timesheets/presentation/pages/details/task_details_screen.dart';
-import 'package:apexive_assignment/shared/constants/colors.dart';
+import 'package:apexive_assignment/shared/constants/styles.dart';
 import 'package:apexive_assignment/shared/widgets/timer/custom_timer_view.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -36,7 +36,7 @@ class TimesheetsTab extends StatelessWidget {
           if (appTimer.isComplete)
             Container(
               decoration: BoxDecoration(
-                color: white.withOpacity(.08),
+                color: Theme.of(context).colorScheme.primary.withOpacity(.08),
                 borderRadius: BorderRadius.circular(16),
               ),
               padding: const EdgeInsets.all(16),
@@ -48,13 +48,13 @@ class TimesheetsTab extends StatelessWidget {
                     children: [
                       SvgPicture.asset(Assets.circularCheckmark),
                       const SizedBox(width: 8),
-                      const BasicDetailsView(),
+                      const DateAndTimeView(),
                     ],
                   ),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(64),
-                      color: white.withOpacity(.16),
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                     height: 32,
                     padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -70,14 +70,14 @@ class TimesheetsTab extends StatelessWidget {
           else
             Container(
               decoration: BoxDecoration(
-                color: white.withOpacity(.08),
+                color: Theme.of(context).colorScheme.primary.withOpacity(.08),
                 borderRadius: BorderRadius.circular(16),
               ),
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const BasicDetailsView(),
+                  const DateAndTimeView(),
                   const SizedBox(height: 8),
                   CustomTimerView(
                     duration: appTimer.task.duration,

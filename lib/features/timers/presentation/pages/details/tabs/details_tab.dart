@@ -1,10 +1,8 @@
+import 'package:apexive_assignment/core/theme/light.dart';
 import 'package:apexive_assignment/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:apexive_assignment/core/models/app_timer.dart';
-import 'package:apexive_assignment/shared/constants/assets.dart';
-import 'package:apexive_assignment/shared/constants/colors.dart';
 
 class DetailsTab extends StatelessWidget {
   final AppTimer appTimer;
@@ -22,7 +20,7 @@ class DetailsTab extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: white.withOpacity(.08),
+              color: Theme.of(context).colorScheme.primary.withOpacity(.08),
               borderRadius: BorderRadius.circular(16),
             ),
             padding: const EdgeInsets.all(16),
@@ -50,7 +48,7 @@ class DetailsTab extends StatelessWidget {
           const SizedBox(height: 8),
           Container(
             decoration: BoxDecoration(
-              color: white.withOpacity(.08),
+              color: Theme.of(context).colorScheme.primary.withOpacity(.08),
               borderRadius: BorderRadius.circular(16),
             ),
             padding: const EdgeInsets.all(16),
@@ -89,7 +87,7 @@ class DetailView extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: Colors.yellow,
+                  color: indicatorColor,
                 ),
               ),
             Text(

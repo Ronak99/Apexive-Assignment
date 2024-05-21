@@ -1,4 +1,4 @@
-import 'package:apexive_assignment/shared/constants/colors.dart';
+import 'package:apexive_assignment/shared/constants/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,7 +20,7 @@ class AppBarActionButton extends StatelessWidget {
         width: 48,
         margin: const EdgeInsets.only(left: 8),
         decoration: BoxDecoration(
-          color: white.withOpacity(.16),
+          color: Theme.of(context).colorScheme.secondary,
           borderRadius: BorderRadius.circular(12),
         ),
         alignment: Alignment.center,
