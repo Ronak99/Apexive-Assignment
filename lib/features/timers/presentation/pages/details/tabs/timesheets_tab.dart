@@ -1,6 +1,7 @@
 import 'package:apexive_assignment/features/timers/bloc/app_timer_bloc.dart';
 import 'package:apexive_assignment/features/timers/presentation/pages/details/tabs/details_tab.dart';
 import 'package:apexive_assignment/features/timers/presentation/pages/details/widgets/date_and_time_view.dart';
+import 'package:apexive_assignment/features/timers/presentation/pages/details/widgets/description_view.dart';
 import 'package:apexive_assignment/shared/constants/assets.dart';
 import 'package:apexive_assignment/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,7 @@ class TimesheetsTab extends StatelessWidget {
                   const SizedBox(height: 16),
                   const Divider(height: 0),
                   const SizedBox(height: 16),
-                  DescriptionView(text: appTimer.description),
+                  DynamicDescriptionView(text: appTimer.description),
                 ],
               ),
             ),

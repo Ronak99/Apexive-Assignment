@@ -3,18 +3,18 @@ import 'package:apexive_assignment/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class DescriptionView extends StatefulWidget {
+class DynamicDescriptionView extends StatefulWidget {
   final String text;
-  const DescriptionView({
+  const DynamicDescriptionView({
     super.key,
     required this.text,
   });
 
   @override
-  State<DescriptionView> createState() => _DescriptionViewState();
+  State<DynamicDescriptionView> createState() => _DynamicDescriptionViewState();
 }
 
-class _DescriptionViewState extends State<DescriptionView> {
+class _DynamicDescriptionViewState extends State<DynamicDescriptionView> {
   bool isOverflowed = false;
   bool isExpanded = false;
 

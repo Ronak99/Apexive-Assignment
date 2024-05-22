@@ -52,7 +52,7 @@ class DetailsTab extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
             padding: const EdgeInsets.all(16),
-            child: DescriptionView(text: appTimer.description),
+            child: StaticDescriptionView(text: appTimer.description),
           ),
         ],
       ),
@@ -103,9 +103,9 @@ class DetailView extends StatelessWidget {
   }
 }
 
-class DescriptionView extends StatelessWidget {
+class StaticDescriptionView extends StatelessWidget {
   final String text;
-  const DescriptionView({
+  const StaticDescriptionView({
     super.key,
     required this.text,
   });
